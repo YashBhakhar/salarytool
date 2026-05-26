@@ -37,16 +37,11 @@ diagnostic-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # ==============================
 dist/
 build/
-lib/
-# (If your backend compiles to a different directory, add it here)
 
 # ==============================
 # Frontend Build (React/Vite/Create React App)
 # ==============================
-/build
 /dist
-/.next
-/out
 
 # ==============================
 # Environment Variables & Secrets
@@ -75,13 +70,6 @@ coverage/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# VS Code
-.vscode/
-!.vscode/settings.json # (Optional: Keep if you share workspace settings)
-!.vscode/tasks.json    # (Optional: Keep if you share workspace tasks)
-!.vscode/launch.json   # (Optional: Keep if you share debugger configs)
-*.code-workspace
 
 # IntelliJ / WebStorm
 .idea/
