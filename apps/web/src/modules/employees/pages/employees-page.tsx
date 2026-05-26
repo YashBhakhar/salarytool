@@ -12,6 +12,8 @@ import EmployeeModal from "../components/employee-modal";
 
 import EmployeeTable from "../components/employee-table";
 
+import toast from "react-hot-toast";
+
 import {
   useCreateEmployee,
   useDeleteEmployee,
@@ -44,7 +46,15 @@ export default function EmployeesPage() {
 
   function handleCreate(data: unknown) {
     createMutation.mutate(data, {
-      onSuccess: () => setOpen(false),
+      onSuccess: () => {
+        toast.success("Employee created successfully");
+
+        setOpen(false);
+      },
+
+      onError: (error: Error) => {
+        toast.error(error.message);
+      },
     });
   }
 
@@ -56,15 +66,30 @@ export default function EmployeesPage() {
       },
       {
         onSuccess: () => {
+          toast.success("Employee updated successfully");
+
           setEditingEmployee(null);
+
           setOpen(false);
+        },
+
+        onError: (error: Error) => {
+          toast.error(error.message);
         },
       }
     );
   }
 
   function handleDelete(id: number) {
-    deleteMutation.mutate(id);
+    deleteMutation.mutate(id, {
+      onSuccess: () => {
+        toast.success("Employee deleted successfully");
+      },
+
+      onError: (error: Error) => {
+        toast.error(error.message);
+      },
+    });
   }
 
   return (
@@ -89,8 +114,8 @@ export default function EmployeesPage() {
       </div>
 
       {isLoading ? (
-        <p>Loading...</p>
-      ) : (
+        <div className="py-20 text-center">Loading analytics...</div>
+      ) : data.length ? (
         <EmployeeTable
           employees={data?.data || []}
           onEdit={(employee) => {
@@ -99,6 +124,10 @@ export default function EmployeesPage() {
           }}
           onDelete={handleDelete}
         />
+      ) : (
+        <div className="py-10 text-center text-gray-500">
+          No employees found
+        </div>
       )}
 
       <div className="mt-6 flex gap-2">
