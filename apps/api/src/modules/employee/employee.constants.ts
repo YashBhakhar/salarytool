@@ -1,10 +1,4 @@
-export const COUNTRIES = [
-  "India",
-  "USA",
-  "Canada",
-  "Germany",
-  "Australia",
-];
+export const COUNTRIES = ["India", "USA", "Canada", "Germany", "Australia"];
 
 export const JOB_TITLES = [
   "Software Engineer",
@@ -14,10 +8,4 @@ export const JOB_TITLES = [
   "Designer",
 ];
 
-export const DEPARTMENTS = [
-  "Engineering",
-  "HR",
-  "Product",
-  "Design",
-  "QA",
-];
+export const DEPARTMENTS = ["Engineering", "HR", "Product", "Design", "QA"];

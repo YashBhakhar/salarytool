@@ -1,16 +1,10 @@
-import type { ButtonHTMLAttributes }
-from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-interface Props
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-export default function Button({
-  children,
-  className = "",
-  ...props
-}: Props) {
+export default function Button({ children, className = "", ...props }: Props) {
   return (
     <button
       className={`

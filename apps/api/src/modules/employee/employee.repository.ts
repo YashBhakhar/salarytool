@@ -1,9 +1,6 @@
 import { db } from "../../database/sqlite";
 
-import {
-  Employee,
-  EmployeeQuery,
-} from "./employee.types";
+import { Employee, EmployeeQuery } from "./employee.types";
 
 export class EmployeeRepository {
   create(employee: Omit<Employee, "id">) {
@@ -77,9 +74,7 @@ export class EmployeeRepository {
 
     const values = Object.values(data);
 
-    const updates = fields
-      .map((field) => `${field} = ?`)
-      .join(", ");
+    const updates = fields.map((field) => `${field} = ?`).join(", ");
 
     const stmt = db.prepare(`
       UPDATE employees

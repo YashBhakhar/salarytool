@@ -1,9 +1,6 @@
 import { EmployeeRepository } from "./employee.repository";
 
-import {
-  EmployeeSchema,
-  UpdateEmployeeSchema,
-} from "./employee.validator";
+import { EmployeeSchema, UpdateEmployeeSchema } from "./employee.validator";
 
 import { Employee, EmployeeQuery } from "./employee.types";
 
@@ -13,7 +10,11 @@ export class EmployeeService {
   create(data: Employee) {
     const validated = EmployeeSchema.parse(data);
     const now = new Date().toISOString();
-    return repository.create({ ...validated, created_at: now, updated_at: now });
+    return repository.create({
+      ...validated,
+      created_at: now,
+      updated_at: now,
+    });
   }
 
   getAll(query: EmployeeQuery) {
@@ -25,8 +26,7 @@ export class EmployeeService {
   }
 
   update(id: number, data: unknown) {
-    const validated =
-      UpdateEmployeeSchema.parse(data);
+    const validated = UpdateEmployeeSchema.parse(data);
 
     return repository.update(id, validated);
   }

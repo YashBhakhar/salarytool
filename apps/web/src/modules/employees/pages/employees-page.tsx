@@ -1,22 +1,16 @@
 import { useState } from "react";
 
-import Button
-  from "../../../components/common/button";
+import Button from "../../../components/common/button";
 
-import Input
-  from "../../../components/common/input";
+import Input from "../../../components/common/input";
 
-import Card
-  from "../../../components/common/card";
+import Card from "../../../components/common/card";
 
-import EmployeeForm
-  from "../components/employee-form";
+import EmployeeForm from "../components/employee-form";
 
-import EmployeeModal
-  from "../components/employee-modal";
+import EmployeeModal from "../components/employee-modal";
 
-import EmployeeTable
-  from "../components/employee-table";
+import EmployeeTable from "../components/employee-table";
 
 import {
   useCreateEmployee,
@@ -29,33 +23,24 @@ import { useDebounce } from "../../../hooks/use-debounce";
 export default function EmployeesPage() {
   const [page, setPage] = useState(1);
 
-  const [search, setSearch] =
-    useState("");
+  const [search, setSearch] = useState("");
 
-  const [open, setOpen] =
-    useState(false);
+  const [open, setOpen] = useState(false);
 
-  const [editingEmployee,
-    setEditingEmployee] =
-    useState<any>(null);
+  const [editingEmployee, setEditingEmployee] = useState<any>(null);
 
   const debouncedSearch = useDebounce(search, 500);
-  const { data, isLoading } =
-    useEmployees({
-      page,
-      limit: 10,
-      search: debouncedSearch,
-    });
+  const { data, isLoading } = useEmployees({
+    page,
+    limit: 10,
+    search: debouncedSearch,
+  });
 
+  const createMutation = useCreateEmployee();
 
-  const createMutation =
-    useCreateEmployee();
+  const updateMutation = useUpdateEmployee();
 
-  const updateMutation =
-    useUpdateEmployee();
-
-  const deleteMutation =
-    useDeleteEmployee();
+  const deleteMutation = useDeleteEmployee();
 
   function handleCreate(data: unknown) {
     createMutation.mutate(data, {
@@ -88,9 +73,7 @@ export default function EmployeesPage() {
         <Input
           placeholder="Search employee"
           value={search}
-          onChange={(e) =>
-            setSearch(e.target.value)
-          }
+          onChange={(e) => setSearch(e.target.value)}
           name="search"
           className="flex-1"
         />
@@ -119,45 +102,22 @@ export default function EmployeesPage() {
       )}
 
       <div className="mt-6 flex gap-2">
-        <Button
-          onClick={() =>
-            setPage((prev) =>
-              Math.max(prev - 1, 1)
-            )
-          }
-        >
+        <Button onClick={() => setPage((prev) => Math.max(prev - 1, 1))}>
           Prev
         </Button>
 
-        <Button
-          onClick={() =>
-            setPage((prev) => prev + 1)
-          }
-        >
-          Next
-        </Button>
+        <Button onClick={() => setPage((prev) => prev + 1)}>Next</Button>
       </div>
 
       <EmployeeModal
         open={open}
-        title={
-          editingEmployee
-            ? "Edit Employee"
-            : "Create Employee"
-        }
+        title={editingEmployee ? "Edit Employee" : "Create Employee"}
         onClose={() => setOpen(false)}
       >
         <EmployeeForm
           defaultValues={editingEmployee}
-          loading={
-            createMutation.isPending ||
-            updateMutation.isPending
-          }
-          onSubmit={
-            editingEmployee
-              ? handleUpdate
-              : handleCreate
-          }
+          loading={createMutation.isPending || updateMutation.isPending}
+          onSubmit={editingEmployee ? handleUpdate : handleCreate}
         />
       </EmployeeModal>
     </Card>

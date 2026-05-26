@@ -1,18 +1,12 @@
-import { Request, Response }
-from "express";
+import { Request, Response } from "express";
 
-import { AnalyticsService }
-from "./analytics.service";
+import { AnalyticsService } from "./analytics.service";
 
 const service = new AnalyticsService();
 
 export class AnalyticsController {
-  getCountrySalaryInsights(
-    req: Request,
-    res: Response
-  ) {
-    const result =
-      service.getCountrySalaryInsights();
+  getCountrySalaryInsights(req: Request, res: Response) {
+    const result = service.getCountrySalaryInsights();
 
     res.json({
       success: true,
@@ -20,15 +14,10 @@ export class AnalyticsController {
     });
   }
 
-  getJobTitleInsights(
-    req: Request,
-    res: Response
-  ) {
-    const country =
-      req.query.country as string;
+  getJobTitleInsights(req: Request, res: Response) {
+    const country = req.query.country as string;
 
-    const result =
-      service.getJobTitleInsights(country);
+    const result = service.getJobTitleInsights(country);
 
     res.json({
       success: true,
@@ -36,12 +25,8 @@ export class AnalyticsController {
     });
   }
 
-  getDepartmentInsights(
-    req: Request,
-    res: Response
-  ) {
-    const result =
-      service.getDepartmentInsights();
+  getDepartmentInsights(req: Request, res: Response) {
+    const result = service.getDepartmentInsights();
 
     res.json({
       success: true,
@@ -49,12 +34,8 @@ export class AnalyticsController {
     });
   }
 
-  getGlobalStats(
-    req: Request,
-    res: Response
-  ) {
-    const result =
-      service.getGlobalStats();
+  getGlobalStats(req: Request, res: Response) {
+    const result = service.getGlobalStats();
 
     res.json({
       success: true,

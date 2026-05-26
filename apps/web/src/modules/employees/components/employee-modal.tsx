@@ -17,13 +17,9 @@ export default function EmployeeModal({
     <div className="fixed inset-0 flex items-center justify-center bg-black/50">
       <div className="w-full max-w-lg rounded-xl bg-white p-6">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold">
-            {title}
-          </h2>
+          <h2 className="text-xl font-bold">{title}</h2>
 
-          <button onClick={onClose}>
-            X
-          </button>
+          <button onClick={onClose}>X</button>
         </div>
 
         {children}

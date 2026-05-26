@@ -4,8 +4,7 @@ import app from "../app";
 
 describe("Health API", () => {
   it("should return healthy response", async () => {
-    const response = await request(app)
-      .get("/health");
+    const response = await request(app).get("/health");
 
     expect(response.status).toBe(200);
 

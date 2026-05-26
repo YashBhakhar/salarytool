@@ -36,9 +36,7 @@ export class EmployeeController {
   }
 
   getById(req: Request, res: Response) {
-    const result = service.getById(
-      Number(req.params.id)
-    );
+    const result = service.getById(Number(req.params.id));
 
     if (!result) {
       return res.status(404).json({
@@ -55,10 +53,7 @@ export class EmployeeController {
 
   update(req: Request, res: Response) {
     try {
-      const result = service.update(
-        Number(req.params.id),
-        req.body
-      );
+      const result = service.update(Number(req.params.id), req.body);
 
       res.json({
         success: true,
@@ -73,9 +68,7 @@ export class EmployeeController {
   }
 
   delete(req: Request, res: Response) {
-    const result = service.delete(
-      Number(req.params.id)
-    );
+    const result = service.delete(Number(req.params.id));
 
     res.json({
       success: true,

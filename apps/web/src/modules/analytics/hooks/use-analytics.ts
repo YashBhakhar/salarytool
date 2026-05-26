@@ -1,5 +1,4 @@
-import { useQuery }
-from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   getCountrySalaryInsights,
@@ -22,16 +21,10 @@ export function useCountrySalaryInsights() {
   });
 }
 
-export function useJobTitleInsights(
-  country?: string
-) {
+export function useJobTitleInsights(country?: string) {
   return useQuery({
-    queryKey: [
-      "job-title-insights",
-      country,
-    ],
-    queryFn: () =>
-      getJobTitleInsights(country),
+    queryKey: ["job-title-insights", country],
+    queryFn: () => getJobTitleInsights(country),
   });
 }
 

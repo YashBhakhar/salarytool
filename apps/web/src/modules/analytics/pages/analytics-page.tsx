@@ -1,17 +1,12 @@
-import Card
-from "../../../components/common/card";
+import Card from "../../../components/common/card";
 
-import StatsCard
-from "../components/stats-card";
+import StatsCard from "../components/stats-card";
 
-import CountrySalaryTable
-from "../components/country-salary-table";
+import CountrySalaryTable from "../components/country-salary-table";
 
-import DepartmentTable
-from "../components/department-table";
+import DepartmentTable from "../components/department-table";
 
-import JobTitleTable
-from "../components/job-title-table";
+import JobTitleTable from "../components/job-title-table";
 
 import {
   useCountrySalaryInsights,
@@ -21,17 +16,13 @@ import {
 } from "../hooks/use-analytics";
 
 export default function AnalyticsPage() {
-  const globalStats =
-    useGlobalStats();
+  const globalStats = useGlobalStats();
 
-  const countryInsights =
-    useCountrySalaryInsights();
+  const countryInsights = useCountrySalaryInsights();
 
-  const jobTitleInsights =
-    useJobTitleInsights();
+  const jobTitleInsights = useJobTitleInsights();
 
-  const departmentInsights =
-    useDepartmentInsights();
+  const departmentInsights = useDepartmentInsights();
 
   if (
     globalStats.isLoading ||
@@ -47,10 +38,7 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         <StatsCard
           title="Total Employees"
-          value={
-            globalStats.data?.data
-              .total_employees
-          }
+          value={globalStats.data?.data.total_employees}
         />
 
         <StatsCard
@@ -70,35 +58,21 @@ export default function AnalyticsPage() {
       </div>
 
       <Card>
-        <h2 className="mb-4 text-2xl font-bold">
-          Country Salary Insights
-        </h2>
+        <h2 className="mb-4 text-2xl font-bold">Country Salary Insights</h2>
 
-        <CountrySalaryTable
-          data={countryInsights.data?.data || []}
-        />
+        <CountrySalaryTable data={countryInsights.data?.data || []} />
       </Card>
 
       <Card>
-        <h2 className="mb-4 text-2xl font-bold">
-          Job Title Insights
-        </h2>
+        <h2 className="mb-4 text-2xl font-bold">Job Title Insights</h2>
 
-        <JobTitleTable
-          data={jobTitleInsights.data?.data || []}
-        />
+        <JobTitleTable data={jobTitleInsights.data?.data || []} />
       </Card>
 
       <Card>
-        <h2 className="mb-4 text-2xl font-bold">
-          Department Insights
-        </h2>
+        <h2 className="mb-4 text-2xl font-bold">Department Insights</h2>
 
-        <DepartmentTable
-          data={
-            departmentInsights.data?.data || []
-          }
-        />
+        <DepartmentTable data={departmentInsights.data?.data || []} />
       </Card>
     </div>
   );

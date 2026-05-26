@@ -1,8 +1,6 @@
-import { AnalyticsRepository }
-from "./analytics.repository";
+import { AnalyticsRepository } from "./analytics.repository";
 
-const repository =
-  new AnalyticsRepository();
+const repository = new AnalyticsRepository();
 
 export class AnalyticsService {
   getCountrySalaryInsights() {

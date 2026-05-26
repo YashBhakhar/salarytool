@@ -6,16 +6,14 @@ describe("Employee API", () => {
   let employeeId: number;
 
   it("should create employee", async () => {
-    const response = await request(app)
-      .post("/employees")
-      .send({
-        full_name: "Yash Bhakhar",
-        email: "yash@test.com",
-        country: "India",
-        salary: 90000,
-        job_title: "Software Engineer",
-        department: "Engineering",
-      });
+    const response = await request(app).post("/employees").send({
+      full_name: "Yash Bhakhar",
+      email: "yash@test.com",
+      country: "India",
+      salary: 90000,
+      job_title: "Software Engineer",
+      department: "Engineering",
+    });
 
     expect(response.status).toBe(201);
 
@@ -25,11 +23,9 @@ describe("Employee API", () => {
   });
 
   it("should reject invalid employee", async () => {
-    const response = await request(app)
-      .post("/employees")
-      .send({
-        full_name: "",
-      });
+    const response = await request(app).post("/employees").send({
+      full_name: "",
+    });
 
     expect(response.status).toBe(400);
 
@@ -37,33 +33,27 @@ describe("Employee API", () => {
   });
 
   it("should fetch employees", async () => {
-    const response = await request(app)
-      .get("/employees");
+    const response = await request(app).get("/employees");
 
     expect(response.status).toBe(200);
 
     expect(response.body.success).toBe(true);
 
-    expect(Array.isArray(response.body.data))
-      .toBe(true);
+    expect(Array.isArray(response.body.data)).toBe(true);
   });
 
   it("should fetch single employee", async () => {
-    const response = await request(app)
-      .get(`/employees/${employeeId}`);
+    const response = await request(app).get(`/employees/${employeeId}`);
 
     expect(response.status).toBe(200);
 
-    expect(response.body.data.id)
-      .toBe(employeeId);
+    expect(response.body.data.id).toBe(employeeId);
   });
 
   it("should update employee", async () => {
-    const response = await request(app)
-      .patch(`/employees/${employeeId}`)
-      .send({
-        salary: 120000,
-      });
+    const response = await request(app).patch(`/employees/${employeeId}`).send({
+      salary: 120000,
+    });
 
     expect(response.status).toBe(200);
 
@@ -71,8 +61,7 @@ describe("Employee API", () => {
   });
 
   it("should delete employee", async () => {
-    const response = await request(app)
-      .delete(`/employees/${employeeId}`);
+    const response = await request(app).delete(`/employees/${employeeId}`);
 
     expect(response.status).toBe(200);
 
@@ -80,18 +69,15 @@ describe("Employee API", () => {
   });
 
   it("should support pagination", async () => {
-    const response = await request(app)
-      .get("/employees?page=1&limit=5");
+    const response = await request(app).get("/employees?page=1&limit=5");
 
     expect(response.status).toBe(200);
 
-    expect(response.body.data.length)
-      .toBeLessThanOrEqual(5);
+    expect(response.body.data.length).toBeLessThanOrEqual(5);
   });
 
   it("should support search", async () => {
-    const response = await request(app)
-      .get("/employees?search=John");
+    const response = await request(app).get("/employees?search=John");
 
     expect(response.status).toBe(200);
 
@@ -99,8 +85,7 @@ describe("Employee API", () => {
   });
 
   it("should support country filter", async () => {
-    const response = await request(app)
-      .get("/employees?country=India");
+    const response = await request(app).get("/employees?country=India");
 
     expect(response.status).toBe(200);
 

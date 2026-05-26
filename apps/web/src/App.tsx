@@ -1,8 +1,6 @@
-import { QueryProvider }
-from "./providers/query-provider";
+import { QueryProvider } from "./providers/query-provider";
 
-import AppRoutes
-from "./routes";
+import AppRoutes from "./routes";
 
 function App() {
   return (

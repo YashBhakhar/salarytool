@@ -1,10 +1,8 @@
 import { useForm } from "react-hook-form";
 
-import Button
-from "../../../components/common/button";
+import Button from "../../../components/common/button";
 
-import Input
-from "../../../components/common/input";
+import Input from "../../../components/common/input";
 
 interface Props {
   defaultValues?: Record<string, unknown>;
@@ -17,30 +15,17 @@ export default function EmployeeForm({
   onSubmit,
   loading,
 }: Props) {
-  const { register, handleSubmit } =
-    useForm({
-      defaultValues,
-    });
+  const { register, handleSubmit } = useForm({
+    defaultValues,
+  });
 
   return (
-    <form
-      className="space-y-4"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <Input
-        placeholder="Full Name"
-        {...register("full_name")}
-      />
+    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+      <Input placeholder="Full Name" {...register("full_name")} />
 
-      <Input
-        placeholder="Email"
-        {...register("email")}
-      />
+      <Input placeholder="Email" {...register("email")} />
 
-      <Input
-        placeholder="Country"
-        {...register("country")}
-      />
+      <Input placeholder="Country" {...register("country")} />
 
       <Input
         type="number"
@@ -50,19 +35,11 @@ export default function EmployeeForm({
         })}
       />
 
-      <Input
-        placeholder="Job Title"
-        {...register("job_title")}
-      />
+      <Input placeholder="Job Title" {...register("job_title")} />
 
-      <Input
-        placeholder="Department"
-        {...register("department")}
-      />
+      <Input placeholder="Department" {...register("department")} />
 
-      <Button type="submit">
-        {loading ? "Saving..." : "Save"}
-      </Button>
+      <Button type="submit">{loading ? "Saving..." : "Save"}</Button>
     </form>
   );
 }

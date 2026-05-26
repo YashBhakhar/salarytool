@@ -9,5 +9,4 @@ export const EmployeeSchema = z.object({
   department: z.string(),
 });
 
-export const UpdateEmployeeSchema =
-  EmployeeSchema.partial();
+export const UpdateEmployeeSchema = EmployeeSchema.partial();

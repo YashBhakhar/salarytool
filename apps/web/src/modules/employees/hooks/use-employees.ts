@@ -12,14 +12,12 @@ import {
   updateEmployee,
 } from "../services/employee.service";
 
-export function useEmployees(
-  params?: {
-    page?: number;
-    limit?: number;
-    search?: string;
-    country?: string;
-  }
-) {
+export function useEmployees(params?: {
+  page?: number;
+  limit?: number;
+  search?: string;
+  country?: string;
+}) {
   return useQuery({
     queryKey: ["employees", params],
     queryFn: () => getEmployees(params),
@@ -45,13 +43,8 @@ export function useUpdateEmployee() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
-      id,
-      data,
-    }: {
-      id: number;
-      data: unknown;
-    }) => updateEmployee(id, data),
+    mutationFn: ({ id, data }: { id: number; data: unknown }) =>
+      updateEmployee(id, data),
 
     onSuccess: () => {
       queryClient.invalidateQueries({

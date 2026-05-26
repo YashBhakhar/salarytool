@@ -16,10 +16,7 @@ const firstNames = fs
   .split("\n");
 
 const lastNames = fs
-  .readFileSync(
-    path.join(__dirname, "../../seed-data/last_names.txt"),
-    "utf-8"
-  )
+  .readFileSync(path.join(__dirname, "../../seed-data/last_names.txt"), "utf-8")
   .split("\n");
 
 function randomItem<T>(items: T[]): T {

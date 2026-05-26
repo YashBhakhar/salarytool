@@ -3,14 +3,11 @@ import cors from "cors";
 
 import "./database/sqlite";
 
-import healthRoutes
-from "./routes/health.routes";
+import healthRoutes from "./routes/health.routes";
 
-import employeeRoutes
-from "./modules/employee/employee.routes";
+import employeeRoutes from "./modules/employee/employee.routes";
 
-import analyticsRoutes
-from "./modules/analytics/analytics.routes";
+import analyticsRoutes from "./modules/analytics/analytics.routes";
 
 const app = express();
 
